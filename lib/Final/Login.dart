@@ -40,7 +40,7 @@ class _LogInState extends State<LogIn> {
                         width: 55,
                       ),
                       Container(
-                        height: 50,
+                        height: 80,
                         width: 160,
                         decoration: BoxDecoration(
                             image: DecorationImage(

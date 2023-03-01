@@ -1,9 +1,25 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class Splash extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:my_assignment/Final/Register.dart';
+
+class Splash extends StatefulWidget {
   const Splash({super.key});
 
   @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    Timer(
+        const Duration(seconds: 5),
+        (() => Navigator.push(context,
+            MaterialPageRoute(builder: ((context) => const Register())))));
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,

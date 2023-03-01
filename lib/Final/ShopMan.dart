@@ -44,7 +44,7 @@ class _ShopManState extends State<ShopMan> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  height: 56,
+                  height: 60,
                   width: 241,
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -173,13 +173,13 @@ class _ShopManState extends State<ShopMan> {
                                     fit: BoxFit.cover)),
                           ),
                           Container(
-                            height: 100,
+                            height: 250,
                             width: 155,
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 image: DecorationImage(
-                                  image: AssetImage("images/2last.png"),
+                                  image: AssetImage("images/yellow.png"),
                                 )),
                           ),
                         ],
@@ -212,26 +212,17 @@ class _ShopManState extends State<ShopMan> {
                               image: DecorationImage(
                                   image: AssetImage("images/blue.png"),
                                   fit: BoxFit.cover)),
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage("images/filter.png"),
-                              backgroundColor:
-                                  Color.fromARGB(255, 241, 194, 53),
-                            ),
-                          ),
                         ),
                         Container(
-                          height: 100,
+                          height: 250,
                           width: 155,
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
-                                image: AssetImage("images/Last.png"),
+                                image: AssetImage("images/black.png"),
                               )),
-                        )
+                        ),
                       ],
                     )
                   ],

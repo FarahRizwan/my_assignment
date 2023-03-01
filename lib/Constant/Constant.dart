@@ -30,7 +30,7 @@ class MyButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            backgroundColor: Colors.amber),
+            backgroundColor: Color.fromARGB(255, 233, 203, 114)),
         onPressed: onPressed,
         child: Text(
           label,
