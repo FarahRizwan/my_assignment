@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_assignment/Final/Carousal.dart';
 import 'package:my_assignment/Final/Description.dart';
 
 class ShopMan extends StatefulWidget {
@@ -155,7 +156,7 @@ class _ShopManState extends State<ShopMan> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => Description())));
+                                      builder: ((context) => Carousal())));
                             }),
                             child: Container(
                               height: 250,
