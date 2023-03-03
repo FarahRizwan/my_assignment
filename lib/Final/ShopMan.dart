@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_assignment/Final/Description.dart';
 
 class ShopMan extends StatefulWidget {
   const ShopMan({super.key});
@@ -149,15 +150,23 @@ class _ShopManState extends State<ShopMan> {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          Container(
-                            height: 250,
-                            width: 155,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                image: DecorationImage(
-                                    image: AssetImage("images/red.png"),
-                                    fit: BoxFit.cover)),
+                          InkWell(
+                            onTap: (() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => Description())));
+                            }),
+                            child: Container(
+                              height: 250,
+                              width: 155,
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  image: DecorationImage(
+                                      image: AssetImage("images/red.png"),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                           SizedBox(
                             height: 17,
