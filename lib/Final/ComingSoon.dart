@@ -7,26 +7,24 @@ class ComingSoon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 350),
-          child: Container(
-            child: Column(
-              children: [
-                Text(
-                  "Coming Soon...",
-                  style: GoogleFonts.bebasNeue(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black)),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Image(image: AssetImage("images/Storke2.png")))
-              ],
-            ),
+      backgroundColor: Color.fromARGB(255, 255, 202, 65),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 370),
+        child: Container(
+          child: Column(
+            children: [
+              Text(
+                "Coming Soon...",
+                style: GoogleFonts.bebasNeue(
+                    textStyle: TextStyle(fontSize: 40, color: Colors.black)),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Image(image: AssetImage("images/Storke2.png")))
+            ],
           ),
         ),
       ),

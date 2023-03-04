@@ -19,121 +19,110 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 17, top: 70),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 50,
-                        width: 50,
-                        child: const Image(
-                          image: AssetImage("images/cross2.png"),
-                          fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 17, top: 70),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 55,
                         ),
-                      ),
-                      SizedBox(
-                        width: 55,
-                      ),
-                      Container(
-                        height: 80,
-                        width: 160,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("images/login.png"))),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 40),
+                          child: Container(
+                            height: 80,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("images/login.png"))),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 78, left: 20),
-                child: Text(
-                  "EXISTING CUSTOMER",
-                  style: GoogleFonts.bebasNeue(
-                      textStyle: const TextStyle(
-                          fontSize: 28,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold)),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 78, left: 20),
+                  child: Text(
+                    "EXISTING CUSTOMER",
+                    style: GoogleFonts.bebasNeue(
+                        textStyle: const TextStyle(
+                            fontSize: 28,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Container(
-              height: 50,
-              width: 350,
-              child: TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  hintText: "Email",
+              SizedBox(
+                height: 25,
+              ),
+              TextFromField(
+                obscureText: false,
+                hintText: "Email",
+                keyboard: TextInputType.emailAddress,
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              TextFromField(
+                obscureText: true,
+                hintText: "Password",
+                keyboard: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 22,
+              ),
+              // Center(
+              //     child: Text(
+              //   "Forgot Password?",
+              //   style: GoogleFonts.bebasNeue(
+              //       textStyle: const TextStyle(
+              //           color: Color.fromARGB(255, 163, 156, 156),
+              //           fontSize: 20,
+              //           decoration: TextDecoration.underline)),
+              // )),
+              const SizedBox(
+                height: 25,
+              ),
+              MyButton(
+                  label: "LOG IN",
+                  onPressed: (() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ShopMan()));
+                  })),
+              const SizedBox(
+                height: 25,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text(
+                    "NEW CUSTOMER",
+                    style: GoogleFonts.bebasNeue(
+                        textStyle: const TextStyle(
+                            fontSize: 28,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Container(
-              height: 50,
-              width: 350,
-              child: TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  hintText: "Password",
-                ),
+              const SizedBox(
+                height: 21,
               ),
-            ),
-            const SizedBox(
-              height: 22,
-            ),
-            Center(
-                child: Text(
-              "Forgot Password?",
-              style: GoogleFonts.bebasNeue(
-                  textStyle: const TextStyle(
-                      color: Color.fromARGB(255, 163, 156, 156),
-                      fontSize: 20,
-                      decoration: TextDecoration.underline)),
-            )),
-            const SizedBox(
-              height: 25,
-            ),
-            MyButton(
-                label: "LOG IN",
-                onPressed: (() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ShopMan()));
-                })),
-            const SizedBox(
-              height: 25,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  "NEW CUSTOMER",
-                  style: GoogleFonts.bebasNeue(
-                      textStyle: const TextStyle(
-                          fontSize: 28,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 21,
-            ),
-            MyButton(label: "CONTINUE", onPressed: (() {}))
-          ],
+              MyButton(label: "CONTINUE", onPressed: (() {}))
+            ],
+          ),
         ));
   }
 }

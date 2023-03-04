@@ -5,7 +5,7 @@ class MyButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
 
-  MyButton({required this.label, required this.onPressed});
+  const MyButton({required this.label, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,12 @@ class MyButton extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 245, 239, 173),
+            color: Color.fromARGB(255, 241, 238, 204),
             offset: const Offset(
               0.0,
               5.0,
             ),
-            blurRadius: 6.0,
+            blurRadius: 3.0,
             spreadRadius: 1.0,
           ), //BoxShadow
         ],
@@ -30,7 +30,7 @@ class MyButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            backgroundColor: Color.fromARGB(255, 233, 203, 114)),
+            backgroundColor: Color.fromARGB(255, 255, 202, 65)),
         onPressed: onPressed,
         child: Text(
           label,
@@ -44,20 +44,29 @@ class MyButton extends StatelessWidget {
 
 class TextFromField extends StatelessWidget {
   final hintText;
+  final keyboard;
+  final obscureText;
 
   TextFromField({
+    super.key,
     required this.hintText,
+    required this.keyboard,
+    required this.obscureText,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: TextFormField(
-        keyboardType: TextInputType.emailAddress,
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: hintText,
+    return Container(
+      height: 70,
+      width: 400,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: TextFormField(
+          keyboardType: keyboard,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            hintText: hintText,
+          ),
         ),
       ),
     );
@@ -66,7 +75,7 @@ class TextFromField extends StatelessWidget {
 
 class Containers extends StatelessWidget {
   final Image;
-  Containers({required this.Image});
+  const Containers({required this.Image});
 
   @override
   Widget build(BuildContext context) {

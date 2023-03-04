@@ -14,7 +14,7 @@ class _DateState extends State<Date> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(20.0),
       child: TextField(
           controller: _date,
           decoration: InputDecoration(hintText: "Select DOB"),
@@ -24,6 +24,7 @@ class _DateState extends State<Date> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1970),
                 lastDate: DateTime(2024));
+
             if (pickeddate != null) {
               setState(() {
                 _date.text = DateFormat("dd-MM-yyyy").format(pickeddate);

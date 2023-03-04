@@ -30,10 +30,13 @@ class _RegisterState extends State<Register> {
           size: 40,
         ),
         actions: [
-          Icon(
-            Icons.check,
-            size: 40,
-            color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.check,
+              size: 40,
+              color: Colors.black,
+            ),
           )
         ],
         title: Containers(Image: AssetImage("images/Title-Small.png")),
@@ -61,17 +64,29 @@ class _RegisterState extends State<Register> {
             ),
             Column(
               children: [
-                TextFromField(hintText: "Email"),
+                TextFromField(
+                  obscureText: false,
+                  hintText: "Email",
+                  keyboard: TextInputType.emailAddress,
+                ),
               ],
             ),
             SizedBox(
               height: 26,
             ),
-            TextFromField(hintText: "Password"),
+            TextFromField(
+              obscureText: true,
+              hintText: "Password",
+              keyboard: TextInputType.emailAddress,
+            ),
             SizedBox(
               height: 26,
             ),
-            TextFromField(hintText: "Re-Type Password"),
+            TextFromField(
+              obscureText: true,
+              hintText: "Re-Type Password",
+              keyboard: TextInputType.emailAddress,
+            ),
             SizedBox(
               height: 26,
             ),
@@ -79,19 +94,26 @@ class _RegisterState extends State<Register> {
             SizedBox(
               height: 26,
             ),
-            TextFromField(hintText: "Zip Code"),
+            TextFromField(
+              obscureText: false,
+              hintText: "Zip Code",
+              keyboard: TextInputType.number,
+            ),
             SizedBox(
               height: 26,
             ),
-            MyButton(
-                label: "Register",
-                onPressed: (() {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LogIn(),
-                      ));
-                }))
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30),
+              child: MyButton(
+                  label: "Register",
+                  onPressed: (() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LogIn(),
+                        ));
+                  })),
+            )
           ],
         ),
       ),

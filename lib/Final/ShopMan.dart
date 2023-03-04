@@ -14,30 +14,11 @@ class ShopMan extends StatefulWidget {
 class _ShopManState extends State<ShopMan> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [
-          Row(
-            children: [
-              SizedBox(
-                width: 5,
-              ),
-              Icon(
-                Icons.person,
-                color: Colors.black,
-                size: 40,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Icon(Icons.shopping_basket)
-            ],
-          ),
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30, left: 6),
         child: SingleChildScrollView(
@@ -45,13 +26,16 @@ class _ShopManState extends State<ShopMan> {
             children: [
               Align(
                 alignment: Alignment.topLeft,
-                child: Container(
-                  height: 60,
-                  width: 241,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("images/Man.png"),
-                          fit: BoxFit.cover)),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 30),
+                  child: Container(
+                    height: 60,
+                    width: 241,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("images/Man.png"),
+                            fit: BoxFit.cover)),
+                  ),
                 ),
               ),
               SizedBox(height: 30),
@@ -145,7 +129,7 @@ class _ShopManState extends State<ShopMan> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 50, left: 20),
+                padding: const EdgeInsets.only(top: 50, left: 15, right: 10),
                 child: Row(
                   children: [
                     SingleChildScrollView(
@@ -160,13 +144,13 @@ class _ShopManState extends State<ShopMan> {
                             }),
                             child: Container(
                               height: 250,
-                              width: 155,
+                              width: ((screenWidth / 2) - 30),
                               decoration: BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                   image: DecorationImage(
-                                      image: AssetImage("images/red.png"),
-                                      fit: BoxFit.cover)),
+                                    image: AssetImage("images/red.png"),
+                                  )),
                             ),
                           ),
                           SizedBox(
@@ -174,17 +158,17 @@ class _ShopManState extends State<ShopMan> {
                           ),
                           Container(
                             height: 250,
-                            width: 155,
+                            width: ((screenWidth / 2) - 30),
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 image: DecorationImage(
-                                    image: AssetImage("images/multi.png"),
-                                    fit: BoxFit.cover)),
+                                  image: AssetImage("images/multi.png"),
+                                )),
                           ),
                           Container(
                             height: 250,
-                            width: 155,
+                            width: ((screenWidth / 2) - 30),
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -192,40 +176,43 @@ class _ShopManState extends State<ShopMan> {
                                   image: AssetImage("images/yellow.png"),
                                 )),
                           ),
+                          SizedBox(
+                            height: 20,
+                          )
                         ],
                       ),
                     ),
                     SizedBox(
-                      width: 25,
+                      width: 15,
                     ),
                     Column(
                       children: [
                         Container(
                           height: 250,
-                          width: 155,
+                          width: ((screenWidth / 2) - 30),
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
-                                  image: AssetImage("images/white.png"),
-                                  fit: BoxFit.cover)),
+                                image: AssetImage("images/white.png"),
+                              )),
                         ),
                         SizedBox(
                           height: 17,
                         ),
                         Container(
                           height: 250,
-                          width: 155,
+                          width: ((screenWidth / 2) - 30),
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
-                                  image: AssetImage("images/blue.png"),
-                                  fit: BoxFit.cover)),
+                                image: AssetImage("images/blue.png"),
+                              )),
                         ),
                         Container(
                           height: 250,
-                          width: 155,
+                          width: ((screenWidth / 2) - 30),
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
@@ -233,6 +220,9 @@ class _ShopManState extends State<ShopMan> {
                                 image: AssetImage("images/black.png"),
                               )),
                         ),
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     )
                   ],
