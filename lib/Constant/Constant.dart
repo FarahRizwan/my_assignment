@@ -46,13 +46,14 @@ class TextFromField extends StatelessWidget {
   final hintText;
   final keyboard;
   final obscureText;
-
-  TextFromField({
-    super.key,
-    required this.hintText,
-    required this.keyboard,
-    required this.obscureText,
-  });
+  final controller;
+  final formKey = GlobalKey<FormState>();
+  TextFromField(
+      {super.key,
+      required this.hintText,
+      required this.keyboard,
+      required this.obscureText,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +62,14 @@ class TextFromField extends StatelessWidget {
       width: 400,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: TextFormField(
-          keyboardType: keyboard,
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            hintText: hintText,
+        child: Form(
+          key: formKey,
+          child: TextFormField(
+            keyboardType: keyboard,
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              hintText: hintText,
+            ),
           ),
         ),
       ),

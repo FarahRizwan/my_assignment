@@ -6,6 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../Constant/Constant.dart';
 import 'ShopMan.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
 
 //import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,6 +18,11 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  final _auth = FirebaseAuth.instance;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,20 +72,29 @@ class _LogInState extends State<LogIn> {
               SizedBox(
                 height: 25,
               ),
-              TextFromField(
-                obscureText: false,
-                hintText: "Email",
-                keyboard: TextInputType.emailAddress,
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    TextFromField(
+                      controller: emailController,
+                      obscureText: false,
+                      hintText: "Email",
+                      keyboard: TextInputType.emailAddress,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 25,
               ),
               TextFromField(
+                controller: passwordController,
                 obscureText: true,
                 hintText: "Password",
                 keyboard: TextInputType.emailAddress,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 22,
               ),
               // Center(
@@ -89,16 +106,30 @@ class _LogInState extends State<LogIn> {
               //           fontSize: 20,
               //           decoration: TextDecoration.underline)),
               // )),
-              const SizedBox(
+              SizedBox(
                 height: 25,
               ),
               MyButton(
                   label: "LOG IN",
                   onPressed: (() {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ShopMan()));
+                    if (formKey.currentState!.validate()) {
+                      setState(() {
+                        loading = true;
+                      });
+                      _auth
+                          .signInWithEmailAndPassword(
+                              email: emailController.text.toString(),
+                              password: passwordController.text.toString())
+                          .then((value) {
+                        return ToastMessage().toastmsg("Login Successfully");
+                      }).onError((error, stackTrace) {
+                        return ToastMessage().toastmsg(error.toString());
+                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ShopMan()));
+                    }
                   })),
               const SizedBox(
                 height: 25,
@@ -126,3 +157,47 @@ class _LogInState extends State<LogIn> {
         ));
   }
 }
+
+class ToastMessage {
+  void toastmsg(String msg) {
+    Fluttertoast.showToast(
+        msg: "Login Succesfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Color.fromARGB(255, 253, 237, 21),
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+}
+// try {
+//                         print("Hello");
+// _auth
+//                             .signInWithEmailAndPassword(
+//                                 email: "a@a.com", password: "123456")
+//                             .then((value) {
+//                           setState(() {
+//                             loading = false;
+//                             print(value);
+//                           });
+//                           print(_auth);
+//                           Navigator.push(
+//                               context,
+//                               MaterialPageRoute(
+//                                   builder: (context) => const ShopMan()));
+//                           return ToastMessage().toastmsg("Login Successfully");
+//                         }).onError((error, stackTrace) {
+//                           setState(() {
+//                             loading = false;
+//                           });
+//                           return ToastMessage().toastmsg(error.toString());
+//                         });
+//                       } on FirebaseAuthException catch (e) {
+//                         if (e.code == 'weak-password') {
+//                           print('The password provided is too weak.');
+//                         } else if (e.code == 'email-already-in-use') {
+//                           print('The account already exists for that email.');
+//                         }
+//                       } catch (e) {
+//                         print("e");
+//                       }

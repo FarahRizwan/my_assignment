@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:my_assignment/Final/ShopMan.dart';
 import '../../Constant/Constant.dart';
 
 import 'Date.dart';
@@ -16,6 +18,13 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final _auth = FirebaseAuth.instance;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController zipCodeController = TextEditingController();
+
+  final TextEditingController _date = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,19 +71,24 @@ class _RegisterState extends State<Register> {
             SizedBox(
               height: 32,
             ),
-            Column(
-              children: [
-                TextFromField(
-                  obscureText: false,
-                  hintText: "Email",
-                  keyboard: TextInputType.emailAddress,
-                ),
-              ],
+            Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  TextFromField(
+                    controller: emailController,
+                    obscureText: false,
+                    hintText: "Email",
+                    keyboard: TextInputType.emailAddress,
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 26,
             ),
             TextFromField(
+              controller: passwordController,
               obscureText: true,
               hintText: "Password",
               keyboard: TextInputType.emailAddress,
@@ -83,6 +97,7 @@ class _RegisterState extends State<Register> {
               height: 26,
             ),
             TextFromField(
+              controller: passwordController,
               obscureText: true,
               hintText: "Re-Type Password",
               keyboard: TextInputType.emailAddress,
@@ -90,11 +105,32 @@ class _RegisterState extends State<Register> {
             SizedBox(
               height: 26,
             ),
-            Date(),
+            // Date(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                  controller: _date,
+                  decoration: InputDecoration(hintText: "Select DOB"),
+                  onTap: () async {
+                    DateTime? pickeddate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1970),
+                        lastDate: DateTime(2024));
+
+                    if (pickeddate != null) {
+                      setState(() {
+                        _date.text =
+                            DateFormat("dd-MM-yyyy").format(pickeddate);
+                      });
+                    }
+                  }),
+            ),
             SizedBox(
               height: 26,
             ),
             TextFromField(
+              controller: zipCodeController,
               obscureText: false,
               hintText: "Zip Code",
               keyboard: TextInputType.number,
@@ -107,16 +143,37 @@ class _RegisterState extends State<Register> {
               child: MyButton(
                   label: "Register",
                   onPressed: (() {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LogIn(),
-                        ));
+                    _auth
+                        .createUserWithEmailAndPassword(
+                            email: emailController.text.toString(),
+                            password: passwordController.text.toString())
+                        // email: "b@b.com",
+                        // password: "123456")
+                        .then((value) {
+                      return ToastMessage().toastmsg("Singup Successfully");
+                    }).onError((error, stackTrace) {
+                      return ToastMessage().toastmsg(error.toString());
+                    });
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (((context) => LogIn()))));
                   })),
             )
           ],
         ),
       ),
     );
+  }
+}
+
+class ToastMessage {
+  void toastmsg(String msg) {
+    Fluttertoast.showToast(
+        msg: "Signup Succesfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Color.fromARGB(255, 208, 164, 160),
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }
