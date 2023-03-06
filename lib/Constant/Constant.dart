@@ -47,7 +47,7 @@ class TextFromField extends StatelessWidget {
   final keyboard;
   final obscureText;
   final controller;
-  final formKey = GlobalKey<FormState>();
+
   TextFromField(
       {super.key,
       required this.hintText,
@@ -62,14 +62,11 @@ class TextFromField extends StatelessWidget {
       width: 400,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Form(
-          key: formKey,
-          child: TextFormField(
-            keyboardType: keyboard,
-            obscureText: obscureText,
-            decoration: InputDecoration(
-              hintText: hintText,
-            ),
+        child: TextFormField(
+          keyboardType: keyboard,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            hintText: hintText,
           ),
         ),
       ),

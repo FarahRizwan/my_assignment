@@ -13,6 +13,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 
 class LogIn extends StatefulWidget {
+  const LogIn({super.key});
+
   @override
   State<LogIn> createState() => _LogInState();
 }
@@ -118,8 +120,8 @@ class _LogInState extends State<LogIn> {
                       });
                       _auth
                           .signInWithEmailAndPassword(
-                              email: emailController.text.toString(),
-                              password: passwordController.text.toString())
+                              email: emailController.text,
+                              password: passwordController.text)
                           .then((value) {
                         return ToastMessage().toastmsg("Login Successfully");
                       }).onError((error, stackTrace) {

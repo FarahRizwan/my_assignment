@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_assignment/Final/ShopMan.dart';
+
 import '../../Constant/Constant.dart';
 
-import 'Date.dart';
 import 'Login.dart';
 //import 'package:table_calendar/table_calendar.dart';
 
@@ -25,6 +24,7 @@ class _RegisterState extends State<Register> {
 
   final TextEditingController _date = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +41,16 @@ class _RegisterState extends State<Register> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.check,
-              size: 40,
-              color: Colors.black,
+            child: InkWell(
+              onTap: (() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (((context) => LogIn()))));
+              }),
+              child: Icon(
+                Icons.check,
+                size: 40,
+                color: Colors.black,
+              ),
             ),
           )
         ],
@@ -139,25 +145,27 @@ class _RegisterState extends State<Register> {
               height: 26,
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: MyButton(
-                  label: "Register",
-                  onPressed: (() {
-                    _auth
-                        .createUserWithEmailAndPassword(
-                            email: emailController.text.toString(),
-                            password: passwordController.text.toString())
-                        // email: "b@b.com",
-                        // password: "123456")
-                        .then((value) {
-                      return ToastMessage().toastmsg("Singup Successfully");
-                    }).onError((error, stackTrace) {
-                      return ToastMessage().toastmsg(error.toString());
-                    });
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (((context) => LogIn()))));
-                  })),
-            )
+                padding: const EdgeInsets.only(bottom: 30),
+                child: MyButton(
+                    label: "Register",
+                    onPressed: (() {
+                      if (formKey.currentState!.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
+                        _auth
+                            .createUserWithEmailAndPassword(
+                                email: emailController.text.toString(),
+                                password: passwordController.text.toString())
+                            // email: "b@b.com",
+                            // password: "123456")
+                            .then((value) {
+                          return ToastMessage().toastmsg("Singup Successfully");
+                        }).onError((error, stackTrace) {
+                          return ToastMessage().toastmsg(error.toString());
+                        });
+                      }
+                    })))
           ],
         ),
       ),
