@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_assignment/Constant/Container1.dart';
 
 import 'package:my_assignment/Final/Choose.dart';
 
@@ -31,99 +32,32 @@ class _ShopManState extends State<ShopMan> {
                   child: Container(
                     height: 60,
                     width: 241,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage("images/Man.png"),
                             fit: BoxFit.cover)),
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Row(
                     children: [
-                      Container(
-                        height: 18,
-                        width: 20,
-                        child: Text(
-                          "All",
-                          style: GoogleFonts.robotoCondensed(
-                              textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 15),
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 5.0,
-                              color: Colors.amber),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Container2(label: "All"),
                       ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Container(
-                        height: 18,
-                        width: 70,
-                        child: Text(
-                          "Hoodies",
-                          style: GoogleFonts.robotoCondensed(
-                              textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 15)),
-                        ),
-                      ),
-                      SizedBox(
+                      Container2(label: "Hoodies"),
+                      Container2(label: "Sweatshirts"),
+                      const SizedBox(
                         width: 20,
                       ),
-                      Container(
-                        height: 18,
-                        width: 84,
-                        child: Text(
-                          "Sweatshirts",
-                          style: GoogleFonts.robotoCondensed(
-                              textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 15)),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        height: 18,
-                        width: 70,
-                        child: Text(
-                          "T-Shirts",
-                          style: GoogleFonts.robotoCondensed(
-                              textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 15)),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        height: 18,
-                        width: 60,
-                        child: Text(
-                          "Jumpers",
-                          style: GoogleFonts.robotoCondensed(
-                              textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 15)),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        height: 18,
-                        width: 50,
-                        child: Text(
-                          "Jackets",
-                          style: GoogleFonts.robotoCondensed(
-                            textStyle:
-                                TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                        ),
-                      )
+                      Container2(label: "T-Shirts"),
+                      Container2(label: "Jumpers"),
+                      Container2(label: "Jackets")
                     ],
                   ),
                 ),
@@ -140,12 +74,12 @@ class _ShopManState extends State<ShopMan> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => Choose())));
+                                      builder: ((context) => const Choose())));
                             }),
                             child: Container(
                               height: 250,
                               width: ((screenWidth / 2) - 30),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                   image: DecorationImage(
@@ -153,13 +87,13 @@ class _ShopManState extends State<ShopMan> {
                                   )),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 17,
                           ),
                           Container(
                             height: 250,
                             width: ((screenWidth / 2) - 30),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 image: DecorationImage(
@@ -169,20 +103,20 @@ class _ShopManState extends State<ShopMan> {
                           Container(
                             height: 250,
                             width: ((screenWidth / 2) - 30),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 image: DecorationImage(
                                   image: AssetImage("images/yellow.png"),
                                 )),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           )
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Column(
@@ -190,20 +124,20 @@ class _ShopManState extends State<ShopMan> {
                         Container(
                           height: 250,
                           width: ((screenWidth / 2) - 30),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
                                 image: AssetImage("images/white.png"),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 17,
                         ),
                         Container(
                           height: 250,
                           width: ((screenWidth / 2) - 30),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
@@ -213,14 +147,14 @@ class _ShopManState extends State<ShopMan> {
                         Container(
                           height: 250,
                           width: ((screenWidth / 2) - 30),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                               image: DecorationImage(
                                 image: AssetImage("images/black.png"),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         )
                       ],

@@ -15,8 +15,14 @@ class _DateState extends State<Date> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: TextField(
+      child: TextFormField(
           controller: _date,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "please enter your DOB";
+            }
+            return null;
+          },
           decoration: InputDecoration(hintText: "Select DOB"),
           onTap: () async {
             DateTime? pickeddate = await showDatePicker(

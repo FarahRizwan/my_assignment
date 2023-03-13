@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Container1 extends StatelessWidget {
   const Container1({super.key});
@@ -42,5 +43,24 @@ class Container1 extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class Container2 extends StatelessWidget {
+  const Container2({super.key, required this.label});
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 20,
+      width: 80,
+      child: Text(
+        label,
+        style: GoogleFonts.robotoCondensed(
+          textStyle: const TextStyle(color: Colors.black, fontSize: 15),
+        ),
+      ),
+    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_assignment/Final/Choose.dart';
 
 import 'package:my_assignment/Final/SplashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';

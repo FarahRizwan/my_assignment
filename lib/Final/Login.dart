@@ -78,17 +78,17 @@ class _LogInState extends State<LogIn> {
                 key: formKey,
                 child: Column(
                   children: [
-                    TextFromField(
-                      controller: emailController,
+                    TextForm(
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "please enter your Email";
                         }
                         return null;
                       },
+                      controller: emailController,
                       obscureText: false,
                       hintText: "Email",
-                      keyboard: TextInputType.emailAddress,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ],
                 ),
@@ -96,17 +96,17 @@ class _LogInState extends State<LogIn> {
               SizedBox(
                 height: 25,
               ),
-              TextFromField(
+              TextForm(
                 controller: passwordController,
+                obscureText: true,
+                hintText: "Password",
+                keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "please enter your Password";
                   }
                   return null;
                 },
-                obscureText: true,
-                hintText: "Password",
-                keyboard: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: 22,
@@ -132,17 +132,20 @@ class _LogInState extends State<LogIn> {
                       });
                       _auth
                           .signInWithEmailAndPassword(
-                              email: emailController.text,
-                              password: passwordController.text)
+                              email: emailController.text.toString(),
+                              password: passwordController.text.toString())
                           .then((value) {
+                        setState(() {
+                          loading = true;
+                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ShopMan()));
                         return ToastMessage().toastmsg("Login Successfully");
                       }).onError((error, stackTrace) {
                         return ToastMessage().toastmsg(error.toString());
                       });
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ShopMan()));
                     }
                   })),
               const SizedBox(
@@ -179,7 +182,7 @@ class ToastMessage {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Color.fromARGB(255, 253, 237, 21),
+        backgroundColor: Color.fromARGB(255, 255, 202, 65),
         textColor: Colors.white,
         fontSize: 16.0);
   }
