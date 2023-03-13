@@ -53,7 +53,8 @@ class TextFromField extends StatelessWidget {
       required this.hintText,
       required this.keyboard,
       required this.obscureText,
-      required this.controller});
+      required this.controller,
+      required String? Function(dynamic value) validator});
 
   @override
   Widget build(BuildContext context) {

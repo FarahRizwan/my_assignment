@@ -80,6 +80,12 @@ class _LogInState extends State<LogIn> {
                   children: [
                     TextFromField(
                       controller: emailController,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "please enter your Email";
+                        }
+                        return null;
+                      },
                       obscureText: false,
                       hintText: "Email",
                       keyboard: TextInputType.emailAddress,
@@ -92,6 +98,12 @@ class _LogInState extends State<LogIn> {
               ),
               TextFromField(
                 controller: passwordController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "please enter your Password";
+                  }
+                  return null;
+                },
                 obscureText: true,
                 hintText: "Password",
                 keyboard: TextInputType.emailAddress,

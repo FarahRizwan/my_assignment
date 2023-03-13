@@ -18,11 +18,11 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final _auth = FirebaseAuth.instance;
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController zipCodeController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final zipCodeController = TextEditingController();
 
-  final TextEditingController _date = TextEditingController();
+  final _date = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool loading = false;
   @override
@@ -83,6 +83,7 @@ class _RegisterState extends State<Register> {
                 children: [
                   TextFromField(
                     controller: emailController,
+                    validator: (value) {},
                     obscureText: false,
                     hintText: "Email",
                     keyboard: TextInputType.emailAddress,
@@ -95,6 +96,7 @@ class _RegisterState extends State<Register> {
             ),
             TextFromField(
               controller: passwordController,
+              validator: (value) {},
               obscureText: true,
               hintText: "Password",
               keyboard: TextInputType.emailAddress,
@@ -104,6 +106,7 @@ class _RegisterState extends State<Register> {
             ),
             TextFromField(
               controller: passwordController,
+              validator: (value) {},
               obscureText: true,
               hintText: "Re-Type Password",
               keyboard: TextInputType.emailAddress,
@@ -137,6 +140,7 @@ class _RegisterState extends State<Register> {
             ),
             TextFromField(
               controller: zipCodeController,
+              validator: (value) {},
               obscureText: false,
               hintText: "Zip Code",
               keyboard: TextInputType.number,
